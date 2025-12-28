@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velocé Racing — Achievements</title>
+
+<style>
+/* ... (Keep your existing styles) ... */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+body { background: #000; color: #fff; line-height: 1.6; }
+.video-bg { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: -1; }
+header { text-align: center; padding: 20px; border-bottom: 2px solid #222; }
+header img { width: 120px; }
+nav { text-align: center; margin: 15px 0; }
+nav a, .admin-btn { margin: 0 8px; padding: 8px 14px; border-radius: 20px; border: 1px solid #ff3c3c; color: #ff3c3c; transition: 0.3s; text-decoration: none; background: transparent; cursor: pointer; }
+nav a:hover, .admin-btn:hover { background: #ff3c3c; color: #000; box-shadow: 0 0 15px #ff3c3c; }
+
+.achievements { display: flex; justify-content: center; gap: 20px; width: 90%; margin: 30px auto; overflow-x: auto; padding-bottom: 20px; }
+.achievement-item { min-width: 300px; max-width: 320px; position: relative; background: #111; border: 1px solid #222; flex-shrink: 0; padding-bottom: 10px;}
+.achievement-item img { width: 100%; display: block; transition: transform 0.4s ease; }
+.achievement-info { background: rgba(0,0,0,0.8); padding: 10px; text-align: center; }
+
+/* ADMIN MODE SPECIFIC STYLES */
+.admin-only { display: none; }
+body.admin-mode .admin-only { display: inline-block; }
+body.admin-mode .editable { border: 1px dashed #ff3c3c; padding: 2px; }
+.delete-btn { background: #ff3c3c; color: white; border: none; padding: 5px 10px; cursor: pointer; margin-top: 10px; border-radius: 4px; }
+.add-btn { display: block; margin: 20px auto; background: green; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; }
+
+footer { text-align: center; padding: 20px; color: #777; border-top: 1px solid #222; margin-top: 40px; }
+/* Hide admin controls by default */
+.admin-only, .delete-btn, .add-btn { display: none; }
+
+/* Show them when body has .admin-mode */
+body.admin-mode .admin-only, 
+body.admin-mode .delete-btn, 
+body.admin-mode .add-btn { display: inline-block; }
+
+/* Highlight editable areas for the admin */
+body.admin-mode .editable { border: 1px dashed #ff3c3c; padding: 2px; }
+</style>
+</head>
+
+<body>
+
+<video class="video-bg" autoplay muted loop playsinline>
+  <source src="assets/bg.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<header>
+  <img src="assets/velocelogo.jpg" alt="Velocé Racing Logo">
+  <h1>VELOCÉ RACING</h1>
+  <p>Achievements</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="garage.html">Garage</a>
+  <a href="subsystems.html">Subsystems</a>
+  <button id="loginBtn" class="admin-btn" onclick="toggleAdminMode()">Admin Login</button>
+</nav>
+
+<div class="intro">
+  <h2 class="editable">Our Triumphs</h2>
+  <button class="admin-only add-btn" onclick="addNewAchievement()">+ Add New Achievement</button>
+</div>
+
+<section class="achievements" id="achievements-list">
+  <div class="achievement-item">
+    <img src="assets/Car2Team.jpg" alt="Combustion 2023">
+    <div class="achievement-info">
+      <h3 class="editable">1st Place — COMBUSTION 2023</h3>
+      <button class="admin-only delete-btn" onclick="removeElement(this)">Delete Event</button>
+    
+    </div>
+  </div>
+
+  <div class="admin-only" style="text-align: center; margin-top: 10px;">
+    <button onclick="addNewAchievement()" style="padding: 10px; background-color: green; color: white; margin-right: 10px;">+ Add New Achievement</button>
+    
+    <button onclick="sendEmailUpdate()" style="padding: 10px; background-color: #007bff; color: white;">📧 Email Update to Students</button>
+</div>
+
+  <div class="achievement-item">
+    <img src="assets/car2020.jpg" alt="Combustion 2020">
+    <div class="achievement-info">
+      <h3 class="editable">2nd Place — COMBUSTION 2020</h3>
+      <button class="admin-only delete-btn" onclick="removeElement(this)">Delete Event</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Velocé Racing — Achievements
+</footer>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+$(document).ready(function () {
+
+    /* ---------- ADMIN MODE ---------- */
+    window.toggleAdminMode = function () {
+        const $body = $("body");
+        const $btn = $("#loginBtn");
+
+        if ($body.hasClass("admin-mode")) {
+            $body.removeClass("admin-mode");
+            $btn.text("Admin Login");
+            disableEditing();
+            alert("Logged out: Student View Active");
+        } else {
+            const password = prompt("Enter Admin Password:");
+            if (password === "griffin123") {
+                $body.addClass("admin-mode");
+                $btn.text("Logout (Admin)");
+                enableEditing();
+                alert("Login Success: You can now edit content.");
+            } else {
+                alert("Wrong Password!");
+            }
+        }
+    };
+
+    function enableEditing() {
+        $(".editable").attr("contenteditable", "true");
+    }
+
+    function disableEditing() {
+        $(".editable").attr("contenteditable", "false");
+    }
+
+    /* ---------- ACHIEVEMENT MANAGEMENT ---------- */
+    window.removeElement = function (button) {
+        if (confirm("Are you sure you want to delete this event?")) {
+            $(button).closest(".achievement-item").remove();
+        }
+    };
+
+    window.addNewAchievement = function () {
+        const $container = $("#achievements-list");
+
+        const $newAchievement = $(`
+            <div class="achievement-item">
+                <img src="assets/placeholder.jpg" alt="New Event">
+                <div class="achievement-info">
+                    <h3 class="editable" contenteditable="true">New Event Title</h3>
+                    <button class="admin-only delete-btn" onclick="removeElement(this)">Delete Event</button>
+                </div>
+            </div>
+        `);
+
+        $container.prepend($newAchievement);
+    };
+
+    /* ---------- FORM HANDLING (IF FORM EXISTS) ---------- */
+    $("form").on("submit", function (e) {
+        e.preventDefault();
+
+        const name = $("#name").val().trim();
+        const phone = $("#phone").val().trim();
+        const email = $("#email").val().trim();
+        const branch = $("#branch").val();
+        const dob = $("#dob").val();
+        const domain = $("#domainSelect").val();
+
+        let division = "";
+        $("input[name='options']:checked").each(function () {
+            const label = $(`label[for='${this.id}']`);
+            division = label.length ? label.text() : this.value;
+        });
+
+        let errors = [];
+
+        if (!name) errors.push("- Name is required.");
+        if (!/^[0-9]{10}$/.test(phone)) errors.push("- Phone must be 10 digits.");
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("- Invalid email address.");
+
+        if (errors.length) {
+            alert("Please fix the following errors:\n" + errors.join("\n"));
+            return;
+        }
+
+        const formData = {
+            name,
+            phone,
+            email,
+            branch,
+            division,
+            dob,
+            domain,
+            timestamp: new Date().toLocaleString()
+        };
+
+        const allSubmissions =
+            JSON.parse(localStorage.getItem("teamGriffinSubmissions")) || [];
+        allSubmissions.push(formData);
+        localStorage.setItem(
+            "teamGriffinSubmissions",
+            JSON.stringify(allSubmissions)
+        );
+
+        const dataStr =
+            "data:text/json;charset=utf-8," +
+            encodeURIComponent(JSON.stringify(formData, null, 2));
+
+        const $download = $("<a>")
+            .attr("href", dataStr)
+            .attr("download", `registration_${name}.json`)
+            .appendTo("body");
+
+        $download[0].click();
+        $download.remove();
+
+        alert("Registration Successful!");
+        this.reset();
+    });
+
+    /* ---------- MOBILE TAP SUPPORT ---------- */
+    $(document).on("click", ".achievement-item", function () {
+        $(this).toggleClass("active");
+    });
+
+});
+</script>
+
+
+</body>
+</html>

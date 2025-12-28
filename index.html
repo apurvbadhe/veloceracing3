@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velocé Racing</title>
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: -1;
+}
+
+/* ---------- BODY ---------- */
+body {
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+header img {
+  width: 100px;
+}
+
+header h1 {
+  margin-top: 10px;
+  font-size: 2rem;
+}
+
+/* ---------- NAV ---------- */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px;
+}
+
+nav a {
+  padding: 10px 16px;
+  border-radius: 25px;
+  color: #ff1e1e;
+  border: 1px solid #ff1e1e;
+  transition: 0.3s;
+}
+
+nav a:hover,
+nav a:active {
+  background: #ff1e1e;
+  color: #000;
+  box-shadow: 0 0 15px #ff1e1e;
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ---------- CARDS ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #111;
+  padding: 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- FORM ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input, form select, form button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+form button {
+  background: #ff1e1e;
+  color: #fff;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #ff5656;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+}
+body {
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #222;
+  background: #111;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background: #ff3c3c;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.error {
+  color: #ff3c3c;
+  font-size: 0.85rem;
+}
+body {
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+form {
+  max-width: 420px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #111;
+  border: 1px solid #222;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background: #ff3c3c;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.error {
+  color: #ff3c3c;
+  font-size: 0.85rem;
+}
+</style>
+</head>
+
+<body>
+
+
+<video class="video-bg" autoplay muted loop playsinline>
+  <source src="assets/bg.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<header>
+  <img src="assets/velocelogo.jpg" alt="Veloce Racing">
+  <h1>Velocé Racing</h1>
+  <p>Engineering Performance. Redefining Speed.</p>
+</header>
+
+<nav>
+   <a href="garage.html">Garage</a>
+    <a href="subsystems.html">Subsystems</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="https://www.facebook.com/TeamVeloce/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/veloce_racing_india/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/company/team-veloce-racing/posts/?feedView=all" target="_blank">LinkedIn</a>
+    <a href="https://www.youtube.com/@veloceracing8118" target="_blank">YouTube</a>
+</nav>
+
+<section>
+<h2>Our Expertise</h2>
+<div class="grid">
+  <div class="card"><h3>Aerodynamics</h3><p>CFD-driven aero optimization.</p></div>
+  <div class="card"><h3>Brakes</h3><p>High-performance braking systems.</p></div>
+  <div class="card"><h3>CAE</h3><p>Simulation-backed engineering.</p></div>
+  <div class="card"><h3>Chassis</h3><p>Rigid, lightweight safety-first design.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Contact Us</h2>
+<form id="regForm">
+  <h2>Student Registration</h2>
+
+  <label>Name
+    <input type="text" id="name">
+    <span class="error" id="nameErr"></span>
+  </label>
+
+  <label>Branch
+    <select id="branch">
+      <option value="">Select branch</option>
+      <option>Computer Engineering</option>
+      <option>Mechanical</option>
+      <option>AIDS</option>
+      <option>CSAI</option>
+      <option>CSDS</option>
+      <option>ENTC</option>
+    </select>
+    <span class="error" id="branchErr"></span>
+  </label>
+
+  <label>Division
+    <input type="text" id="division">
+    <span class="error" id="divisionErr"></span>
+  </label>
+
+  <label>Email
+    <input type="email" id="email">
+    <span class="error" id="emailErr"></span>
+  </label>
+
+  <label>Phone Number
+    <input type="text" id="phone">
+    <span class="error" id="phoneErr"></span>
+  </label>
+
+  <button type="submit">Submit & Download JSON</button>
+</form>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+$(document).ready(function () {
+
+  $("#regForm").on("submit", function (e) {
+    e.preventDefault();
+
+    $(".error").text("");
+
+    const name = $("#name").val().trim();
+    const branch = $("#branch").val();
+    const division = $("#division").val().trim();
+    const email = $("#email").val().trim();
+    const phone = $("#phone").val().trim();
+
+    let valid = true;
+
+    if (!name) {
+      $("#nameErr").text("Name required");
+      valid = false;
+    }
+
+    if (!branch) {
+      $("#branchErr").text("Select a branch");
+      valid = false;
+    }
+
+    if (!division) {
+      $("#divisionErr").text("Division required");
+      valid = false;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      $("#emailErr").text("Invalid email");
+      valid = false;
+    }
+
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(phone)) {
+      $("#phoneErr").text("Phone must be 10 digits");
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    const data = {
+      name,
+      branch,
+      division,
+      email,
+      phone,
+      timestamp: new Date().toISOString()
+    };
+
+    const jsonBlob = new Blob(
+      [JSON.stringify(data, null, 2)],
+      { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(jsonBlob);
+    const $download = $("<a>")
+      .attr("href", url)
+      .attr("download", "registration_data.json")
+      .appendTo("body");
+
+    $download[0].click();
+    $download.remove();
+    URL.revokeObjectURL(url);
+
+    this.reset();
+  });
+
+});
+</script>
+
+
+</body>
+</html>

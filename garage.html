@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velocé Racing — Gallery</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  color: #fff;
+  background: #000;
+  line-height: 1.6;
+}
+
+
+.video-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: -1;
+}
+
+
+header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 2px solid #222;
+}
+
+header img {
+  width: 120px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+}
+
+header p {
+  color: #bbb;
+}
+
+
+nav {
+  text-align: center;
+  margin: 15px 0;
+}
+
+nav a {
+  margin: 0 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #ff3c3c;
+  color: #ff3c3c;
+  transition: 0.3s;
+}
+
+nav a:hover,
+nav a:active {
+  background: #ff3c3c;
+  color: #000;
+  box-shadow: 0 0 15px #ff3c3c;
+}
+
+
+.intro {
+  text-align: center;
+  max-width: 900px;
+  margin: 25px auto;
+}
+
+.intro h2 {
+  color: #ff3c3c;
+  margin-bottom: 8px;
+}
+
+.intro p {
+  color: #ccc;
+}
+
+
+.gallery {
+  width: 90%;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #222;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+
+.gallery-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.8);
+  padding: 14px;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-info h3 {
+  color: #ff3c3c;
+  margin-bottom: 5px;
+}
+
+.gallery-info p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+
+.gallery-item:hover .gallery-info {
+  transform: translateY(0);
+}
+
+
+.gallery-item.active .gallery-info {
+  transform: translateY(0);
+}
+
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  border-top: 1px solid #222;
+  margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+
+<video class="video-bg" autoplay muted loop playsinline>
+  <source src="assets/bg.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<header>
+  <img src="assets/velocelogo.jpg" alt="Velocé Racing">
+  <h1>VELOCÉ RACING</h1>
+  <p>Gallery</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="achievements.html">Achievements</a>
+  <a href="subsystems.html">Subsystems</a>
+</nav>
+
+<div class="intro">
+  <h2>Welcome to Our Gallery</h2>
+  <p>Engineering, teamwork, and speed — captured where it matters.</p>
+</div>
+
+<section class="gallery">
+
+  <div class="gallery-item">
+    <img src="assets/Car1.jpg" alt="Car 2024">
+    <div class="gallery-info">
+      <h3>Car of 2024</h3>
+      <p>Precision meets adrenaline.</p>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="assets/car1team.jpg" alt="Team 2024">
+    <div class="gallery-info">
+      <h3>Team of 2024</h3>
+      <p>Built by passion and caffeine.</p>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="assets/pit1jpg.jpg" alt="Pit Crew">
+    <div class="gallery-info">
+      <h3>Pit Crew</h3>
+      <p>Every second is sacred.</p>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="assets/car2.jpg" alt="Car 2023">
+    <div class="gallery-info">
+      <h3>Car of 2023</h3>
+      <p>Foundation of performance.</p>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="assets/Car2Team.jpg" alt="Team">
+    <div class="gallery-info">
+      <h3>Team Moments</h3>
+      <p>Victory, failure, repeat.</p>
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="assets/pit2.jpg" alt="Pit Work">
+    <div class="gallery-info">
+      <h3>Pit Work</h3>
+      <p>Details win races.</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  © 2025 Velocé Racing — Gallery
+</footer>
+
+<script>
+document.querySelectorAll(".gallery-item").forEach(item => {
+  item.addEventListener("click", () => {
+    item.classList.toggle("active");
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Velocé Racing — Subsystems</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* ---------- VIDEO BACKGROUND ---------- */
+.video-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: -1;
+}
+
+/* ---------- HEADER ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 2px solid #222;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 90px;
+}
+
+.nav-center {
+  text-align: center;
+}
+
+.nav-center h1 {
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.nav-right a {
+  margin: 0 6px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #ff3c3c;
+  color: #ff3c3c;
+  transition: 0.3s;
+}
+
+.nav-right a:hover,
+.nav-right a:active {
+  background: #ff3c3c;
+  color: #000;
+  box-shadow: 0 0 15px #ff3c3c;
+}
+
+/* ---------- TITLE ---------- */
+.title-section {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.title-section h2 {
+  color: #ff3c3c;
+  font-size: 2rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 20px auto;
+  width: 85%;
+}
+
+.subsystems {
+  width: 90%;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* exactly 2 per row */
+  gap: 20px;
+}
+
+/* Mobile: 1 per row */
+@media (max-width: 768px) {
+  .subsystems {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.card {
+  background: #111;
+  border: 1px solid #222;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.card h3 {
+  color: #ff3c3c;
+  margin-bottom: 10px;
+}
+
+/* Info hidden initially for mobile */
+.card p {
+  color: #ccc;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* Desktop hover */
+@media (hover: hover) {
+  .card:hover p {
+    max-height: 500px;
+  }
+}
+
+/* Mobile tap (JS toggles .active) */
+.card.active p {
+  max-height: 500px;
+}
+
+/* ---------- MEDIA SECTION ---------- */
+.media {
+  width: 85%;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.media h3 {
+  color: #ff3c3c;
+  margin-bottom: 10px;
+}
+
+.media p {
+  color: #ccc;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+  border-top: 1px solid #222;
+}
+
+.footer a {
+  color: #ff3c3c;
+}
+
+.copy {
+  text-align: center;
+  color: #777;
+  margin: 15px 0;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO BACKGROUND -->
+<video class="video-bg" autoplay muted loop playsinline>
+  <source src="assets/bg.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<header class="site-header">
+  <img src="assets/velocelogo.jpg" class="logo" alt="Velocé Racing">
+  <div class="nav-center">
+    <h1>Velocé Racing</h1>
+    <span class="subtitle">Subsystems</span>
+  </div>
+  <nav class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="garage.html">Garage</a>
+    <a href="achievements.html">Achievements</a>
+  </nav>
+</header>
+
+<section class="title-section">
+  <h2>SUBSYSTEMS</h2>
+</section>
+
+<hr class="divider">
+
+<section class="subsystems">
+
+  <div class="card">
+    <h3>AERODYNAMICS</h3>
+    <p>Our Aerodynamics Department enhances on-track performance through precision CAD modeling in SolidWorks, followed by advanced CFD simulations using Siemens Simcenter Star-CCM+ and ANSYS. This process optimizes airflow and cooling systems to balance downforce and drag. We then translate these sophisticated designs into high-performance reality using carbon-fiber composites, ensuring superior aerodynamics and speed.</p>
+  </div>
+
+  <div class="card">
+    <h3>BRAKES</h3>
+    <p>As a brake systems engineer, you will design, develop, and test critical components like brake discs, calipers, and master cylinders. Using CAD software and simulation tools, you will create high-performance brake systems that meet stringent safety and performance standards. Collaborating with manufacturing partners, you will oversee production and conduct real-world testing to validate designs</p>
+  </div>
+
+  <div class="card">
+    <h3>CAE</h3>
+    <p>The CAE (Computer-Aided Engineering) subsystem is the computational core that drives innovation in our race car design. We harness the power of advanced software and simulation to design, analyze, and optimize every component and system before they ever see the physical world. By leveraging CAE, we significantly reduce development time, minimize physical prototypes, and achieve superior performance on the racetrack.</p>
+  </div>
+
+  <div class="card">
+    <h3>CHASSIS</h3>
+    <p>Students will gain practical experience in designing chassis structures. A chassis is the car's backbone, housing components such as the powertrain, suspension, brakes, and body. Effective chassis design prioritizes ergonomics, safety compliance, lightweight construction, and rigidity. Students will explore both space frame and monocoque chassis configurations.</p>
+  </div>
+
+  <div class="card">
+    <h3>TRANSMISSION</h3>
+    <p>Our transmission system efficiently transmits power from the motor to the driven wheels, enhancing vehicle performance. We design custom parts using advanced software tools like SolidWorks, Kiss-Soft, and MATLAB. This approach ensures a highly efficient and reliable transmission assembly, optimized for maximum performance and durability.</p>
+  </div>
+
+  <div class="card">
+    <h3>SUSPENSION</h3>
+    <p>The suspension module exemplifies the integration of precision engineering and high-performance dynamics, aiming for maximum grip and stability by prioritizing the 3C's: control, comfort, and contact. As a team member, one uses kinematic simulations to refine suspension designs, create key components, and enhance knowledge of vehicle dynamics and structural design. Hands-on experience with MATLAB, CATIA, SolidWorks, and various simulation tools will drive innovative solutions for our Formula Student Competition success.</p>
+  </div>
+
+</section>
+
+<section class="media">
+  <h3>MEDIA</h3>
+  <p>Our team comprises dedicated marketing and media divisions. The marketing team actively seeks sponsorships to fund vehicle development. The media team generates essential reports for static events, manages social media, and creates engaging content using tools like Photoshop and Blender. These combined efforts enhance our team's visibility and resource acquisition.</p>
+</section>
+
+<hr class="divider">
+
+<footer class="footer">
+  <div>
+    <strong>Contact</strong><br>
+    <a href="mailto:teamveloceracing@gmail.com">teamveloceracing@gmail.com</a>
+  </div>
+  <div>
+    <strong>Follow</strong><br>
+    Facebook | Instagram | LinkedIn | YouTube
+  </div>
+</footer>
+
+<p class="copy">© 2025 Velocé Racing — All rights reserved.</p>
+
+<script>
+/* Mobile tap-to-dropdown for cards */
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("active");
+  });
+});
+</script>
+
+</body>
+</html>
